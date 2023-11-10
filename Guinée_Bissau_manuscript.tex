@@ -55,11 +55,11 @@
 %% \author{Prénom Nom}
 %% \address{Affiliation + adresse}
 
-\title{Analyse spatiale et temporelle de la dynamique de paysage en Guinée Bissau par données de télédétection et du SIG GRASS}
+\title{Analyse spatiale et temporelle de la dynamique de paysage en Guinée Bissau par données de télédétection et SIG GRASS}
 
 \author[A1]{Polina Lemenkova}
 
-\address[A1]{Department of Geoinformatics, Universität Salzburg, Schillerstraße 30, A-5020 Salzburg, Austria. ORCID: 0000-0002-5759-1089}
+\address[A1]{Department of Geoinformatics, Universität Salzburg, Schillerstraße 30, A-5020 Salzburg, Austria. ORCID: https://orcid.org/0000-0002-5759-1089}
 
 \begin{resume}
 Dans ce projet, les trois images numériques satellites de Landsat 8-9 OLI/TIRS de 2017 à 2023 ont été utilisés pour la classification et l’analyse d’images. L'objectif de cette étude est de cartographier les changements de couverture terrestre dans la région côtière de Guinée-Bissau, en Afrique de l'Ouest. Une zone d'étude dans les plaines inondables des rivières Geba, Caceu et Rio Grande de Buba, dans la région côtière occidentale de la Guinée-Bissau, a été évaluée et comparée. La méthodologie comprenait l'utilisation des scripts et modules GRASS SIG « i.cluster » et « i.maxlik » pour l'analyse d'images. Les modules auxiliaires comprenaient « i.group », « r.import » et d'autres techniques de GRASS GIS pour le traitement d'images Landsat. Les résultats du traitement d'images ont démontré des changements dans les types de couverture terrestre qui ont été observés, détectés et comparés pour les paysages de la zone d'étude. L'augmentation de l'étendue des mangroves et des zones urbaines et agricoles et la diminution correspondante des zones forestières naturelles sont détectées.
@@ -76,7 +76,6 @@ télédétection \sep traitement d'images \sep cartographie
 In this project, three satellite digital images of Landsat 8-9 OLI/TIRS from the 2017 to 2023 were used for classification and image analysis. The objective of this study is to map land cover changes in the coastal region of Guinea-Bissau, West Africa. A study area in the tidal floodplains of the rivers Geba, Caceu and Rio Grande de Buba, in the western coastal region of Guinea-Bissau, were evaluated ans compared. The methodoolgy included the use of GRASS GIS scripts and modules 'i.cluster' and 'i.maxlik' for image analysis. Auxiliary modules included 'i.group', 'r.import' and other techniques of GRASS GIS for Landsat image processing. The resultes incdicated changes in land cover types which were observed, detected and compared for landscapes of the study area. The increase in the areal extent of mangroves and urban and agricultural areas and corresponding decreases in the natural forest areas are detected.
 \end{abstract}
 %%%%%%%%
-
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword
@@ -100,15 +99,35 @@ Contrairement aux méthodes existantes, la classification par machine, présent�
 %%%%%%%%%%%%
 \subsection{L'objectif et motivation}
 
-L’objectif principale de cet article est d’aborder le problème susmentionné de la surveillance environnementale de la Guinée-Bissau en utilisant l’approche de programmation du logiciel GRASS GIS pour le traitement d’images par satellite. Une nouvelle série d’images Landsat OLI/TIRS est traitée à l’aide des modules GRASS GIS et de la stratégie de script. En utilisant cette approche, la décélération des types de couverture terrestre est effectuée automatiquement à l’aide d’algorithmes de vision par ordinateur qui détectent la réflectance spectrale des pixels sur les images et les attribuent à différentes catégories par regroupement. Cette méthode est testée, expliquée et présentée sous la forme d’une série de nouvelles cartes couvrant la région Guinée-Bissau, Afrique de l’Ouest, figure 1.
+L’objectif principale de cet article est d’aborder le problème susmentionné de la surveillance environnementale de la Guinée-Bissau en utilisant l’approche de programmation du logiciel GRASS GIS pour le traitement d’images par satellite. Une nouvelle série d’images Landsat OLI/TIRS est traitée à l’aide des modules GRASS GIS et de la stratégie de script. En utilisant cette approche, la décélération des types de couverture terrestre est effectuée automatiquement à l’aide d’algorithmes de vision par ordinateur qui détectent la réflectance spectrale des pixels sur les images et les attribuent à différentes catégories par regroupement. Cette méthode est testée, expliquée et présentée sous la forme d’une série de nouvelles cartes couvrant la région Guinée-Bissau, Afrique de l’Ouest, figure \ref{fig01}.
+
+\begin{figure}[htb]
+    \begin{center}
+    \setlength{\unitlength}{0.5cm}
+	\includegraphics{Fig_01.jpg}
+    \end{center}
+    \caption{Carte topographique de la Guinée-Bissau, Afrique de l’Ouest. Source cartographique: auteur. Logiciel : GMT.}
+    \label{fig01}
+\end{figure}
 
 Les objectifs spécifiques de cette recherche étaient (1) de produire des cartes d'occupation du sol basées sur l'interprétation et la classification de photos satellite Landsat OLI/TIRS de 2017 à 2023 couvrant 6 ans, (2) de quantifier et de visualiser les changements dynamiques. de la couverture végétale sur la base de ces cartes, et (3) évaluer l'exactitude de la classification numérique pour la cartographie de la végétation dans les plaines inondables et la zone côtière de Guinée-Bissau. La méthodologie de ce projet s'appuie sur les techniques d'analyse et de script GRASS GIS utilisées pour le traitement d'une série d'images Landsat OLI/TIRS. Les images ont été traitées numériquement à l'aide d'algorithmes de classification et d'interprétation visuelle des images satellite.
 
-Le but de cette recherche est d'identifier et de quantifier les changements naturels et induits par l'homme dans les plaines inondables de marée dans les zones côtières des rivières Geba, Caceu et Rio Grande de Buba, Guinée-Bissau, à l'aide d'images satellite Landsat OLI/TIRS de 2013 à 2023. La région côtière située au nord-ouest de la Guinée-Bissau comprend des mangroves et des plaines inondables, figure 1. Ces régions se composent de diverses classes de couverture végétale et comprennent des forêts inondées, des prairies, des zones urbaines, des zones de croissance secondaire et des forêts de mangroves (Andreetta et al., 2006). Les plaines inondables des deltas fluviaux le long de la côte atlantique comprennent également des écosystèmes de mangroves.
+Le but de cette recherche est d'identifier et de quantifier les changements naturels et induits par l'homme dans les plaines inondables de marée dans les zones côtières des rivières Geba, Caceu et Rio Grande de Buba, Guinée-Bissau, à l'aide d'images satellite Landsat OLI/TIRS de 2017 à 2023. La région côtière située au nord-ouest de la Guinée-Bissau comprend des mangroves et des plaines inondables, figure \ref{fig01}. Ces régions se composent de diverses classes de couverture végétale et comprennent des forêts inondées, des prairies, des zones urbaines, des zones de croissance secondaire et des forêts de mangroves (Andreetta et al., 2006). Les plaines inondables des deltas fluviaux le long de la côte atlantique comprennent également des écosystèmes de mangroves.
 
 \section{Zone d'étude}
 
-La zone d'étude de ce projet est située dans la région côtière occidentale de la Guinée Bissau, sur les côtes atlantiques, approximativement entre les latitudes 10.5° N to 13.0° N et les longitudes 13.5° W et 17° W (Figure 1). La région côtière de la Guinée-Bissau est l’un des écosystèmes tropicaux d’Afrique de l’Ouest les moins connus en l’absence d’études existantes. De plus, la Guinée-Bissau fait partie des pays africains les plus vulnérables et menacés au changement climatique en raison de sa topographie plate et de sa vaste zone côtière sinueuse composée de plusieurs rivières se jetant dans l'océan Atlantique, ainsi que des marées océaniques qui contribuent aux inondations locales (Temudo et al., 2022). Il est bien connu que les changements dans les types de couverture terrestre sont liés aux activités agricoles intensives et aux effets climatiques (Dieng et al., 2018). L'augmentation des températures dans les régions intérieures du pays et les périodes de sécheresse qui entraînent la désertification. 
+La zone d'étude de ce projet est située dans la région côtière occidentale de la Guinée Bissau, sur les côtes atlantiques, approximativement entre les latitudes 10.5° N to 13.0° N et les longitudes 13.5° W et 17° W (figure \ref{fig01}). La région côtière de la Guinée-Bissau est l’un des écosystèmes tropicaux d’Afrique de l’Ouest les moins connus en l’absence d’études existantes. 
+
+De plus, la Guinée-Bissau fait partie des pays africains les plus vulnérables et menacés au changement climatique en raison de sa topographie plate et de sa vaste zone côtière sinueuse composée de plusieurs rivières se jetant dans l'océan Atlantique, ainsi que des marées océaniques qui contribuent aux inondations locales (Temudo et al., 2022). Il est bien connu que les changements dans les types de couverture terrestre sont liés aux activités agricoles intensives et aux effets climatiques (Dieng et al., 2018), figure \ref{fig02}. L'augmentation des températures dans les régions intérieures du pays et les périodes de sécheresse qui entraînent la désertification. 
+
+\begin{figure}[htb]
+    \begin{center}
+ %   \setlength{\unitlength}{0.5cm}
+	\includegraphics{Fig_02.jpg}
+    \end{center}
+    \caption{Carte des types d’utilisation des terres en Guinée-Bissau, Afrique de l’Ouest. Données : Organisation pour l’alimentation et l’agriculture - Food and Agriculture Organisation (FAO). Source cartographique : auteur. Logiciel : QGIS.}
+    \label{fig02}
+\end{figure}
 
 D'autres effets incluent les effets des lunes et des fluctuations des marées le long des régions côtières qui contribuent aux inondations locales et à l'augmentation de la végétation submergée telle que les mangroves. Ainsi, en Guinée-Bissau, les fluctuations de température et les saisons des pluies alternatives de type mousson, alternées avec des périodes de vents chauds et secs soufflant du Sahara, régulent la possibilité d'activités agricoles. Une analyse connexe a également été réalisée concernant la vulnérabilité écologique des régions côtières de Guinée-Bissau et a été rapportée par Lopes et al. (2022). 
 
