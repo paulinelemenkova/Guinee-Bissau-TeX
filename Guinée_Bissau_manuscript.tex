@@ -92,7 +92,7 @@ remote sensing \sep image processing \sep cartography
 \section{Introduction}
 
 \subsection{Contexte}
-Au cours des dernières décennies, des problèmes environnementaux à grande échelle, notamment la déforestation, l'érosion des sols et le surpâturage, ont attiré l'attention internationale sur la Guinée-Bissau. La conversion extensive des marais salants, des forêts et des mangroves en terres agricoles et urbaines a un impact sur les types de couverture terrestre dans les régions côtières du pays \cite{Lopes2022,RAIMUNDOLOPES2022106181}; Cabral, Costa, 2017) et affecte la dynamique de la configuration du paysage \cite{VASCONCELOS2002139}; Lopes et al., 2023). Ce ne sont là que les effets les plus récents et les plus évidents des activités anthropiques dans cette région. 
+Au cours des dernières décennies, des problèmes environnementaux à grande échelle, notamment la déforestation, l'érosion des sols et le surpâturage, ont attiré l'attention internationale sur la Guinée-Bissau. La conversion extensive des marais salants, des forêts et des mangroves en terres agricoles et urbaines a un impact sur les types de couverture terrestre dans les régions côtières du pays \cite{Lopes2022,RAIMUNDOLOPES2022106181}; Cabral, Costa, 2017) et affecte la dynamique de la configuration du paysage \cite{VASCONCELOS2002139,LOPES2023116804}. Ce ne sont là que les effets les plus récents et les plus évidents des activités anthropiques dans cette région. 
 
 Le changement de la couverture terrestre est devenu un sujet important pour la surveillance environnementale en raison des problèmes de changement climatique \cite{Palazot}. Diverses données de télédétection ont été utilisées pour détecter et surveiller les changements de la couverture terrestre à l’échelle locale, régionale et mondiale (Dao, 2021). L’objectif de la détection des changements est d’identifier les changements sur les images satellites entre deux dates ou plus, d’identifier le type de changement et de quantifier la quantité de ces changements. 
 
@@ -124,11 +124,11 @@ Le but de cette recherche est d'identifier et de quantifier les changements natu
 
 La zone d'étude de ce projet est située dans la région côtière occidentale de la Guinée Bissau, sur les côtes atlantiques, approximativement entre les latitudes 10.5° N to 13.0° N et les longitudes 13.5° W et 17° W (figure \ref{fig01}). La région côtière de la Guinée-Bissau est l’un des écosystèmes tropicaux d’Afrique de l’Ouest les moins connus en l’absence d’études existantes. 
 
-De plus, la Guinée-Bissau fait partie des pays africains les plus vulnérables et menacés au changement climatique en raison de sa topographie plate et de sa vaste zone côtière sinueuse composée de plusieurs rivières se jetant dans l'océan Atlantique, ainsi que des marées océaniques qui contribuent aux inondations locales \cite{Temudoetal}. Il est bien connu que les changements dans les types de couverture terrestre sont liés aux activités agricoles intensives et aux effets climatiques (Dieng et al., 2018), figure \ref{fig02}. L'augmentation des températures dans les régions intérieures du pays et les périodes de sécheresse qui entraînent la désertification. 
+De plus, la Guinée-Bissau fait partie des pays africains les plus vulnérables et menacés au changement climatique en raison de sa topographie plate et de sa vaste zone côtière sinueuse composée de plusieurs rivières se jetant dans l'océan Atlantique, ainsi que des marées océaniques qui contribuent aux inondations locales \cite{Temudoetal}. Il est bien connu que les changements dans les types de couverture terrestre sont liés aux activités agricoles intensives et aux effets climatiques (Dieng et al., 2018) \cite{TemudoSantos}, figure \ref{fig02}. L'augmentation des températures dans les régions intérieures du pays et les périodes de sécheresse qui entraînent la désertification. 
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.90\textwidth]{Fig_02}
+	\includegraphics[width=0.99\textwidth]{Fig_02}
 	\caption{Carte des types d’utilisation des terres en Guinée-Bissau, Afrique de l’Ouest. Données : Organisation pour l’alimentation et l’agriculture - Food and Agriculture Organisation (FAO). Source cartographique : auteur. Logiciel : QGIS.}
 	\label{fig02}
 \end{figure*}
@@ -143,7 +143,7 @@ L'utilisation d'images satellitaires et de données de télédétection a début
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{Fig_03}
+	\includegraphics[width=0.99\textwidth]{Fig_03}
 	\caption{Images composites en couleur de navigation RGB réfléchissante de niveau 1 sur la Guinée-Bissau, Afrique de l’Ouest. Source des données : USGS. Les images ont été prises le 7 mai 2023, le 6 mai 2020 et le 28 avril 2017.}
 	\label{fig03}
 \end{figure*}
@@ -160,11 +160,11 @@ Les segments des images composites couleur Landsat de 7 mai 2023, le 6 mai 2020 
 
 \subsection{L’utilisation de GRASS GIS pour le traitement d'images satellites}
 
-L'analyse de détection des changements de paysages basée sur des images satellite est une technique de logiciels GRASS SIG qui effectue une comparaison entre les types de couverture terrestre détectés à l'aide d'images obtenues à différentes dates. L'analyse comparative des cartes de classification issues de ces données multi-temporelles permet de détecter des changements de paysage \cite{Pennober}; Ndehedehe, 2022). 
+L'analyse de détection des changements de paysages basée sur des images satellite est une technique de logiciels GRASS SIG qui effectue une comparaison entre les types de couverture terrestre détectés à l'aide d'images obtenues à différentes dates. L'analyse comparative des cartes de classification issues de ces données multi-temporelles permet de détecter des changements de paysage \cite{Pennober,Ndehedehe2022}. 
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{Fig_04}
+	\includegraphics[width=0.99\textwidth]{Fig_04}
 	\caption{Composites en couleurs vraies et fausses des images Landsat 8-9 OLI/TIRS (bandes 4-3-2, 2-3-4 et 7-6-4), Guinée-Bissau pour les années 2017, 2020 et 2023.}
 	\label{fig04}
 \end{figure*}
@@ -185,7 +185,7 @@ On peut voir les différences distinctes entre les différents types de couvertu
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{Fig_05}
+	\includegraphics[width=0.99\textwidth]{Fig_05}
 	\caption{Résultats de la classification des images Landsat 8-9 OLI/TIRS, Guinée-Bissau pour les années 2017, 2020 et 2023 : cartes des types d'occupation du sol}
 	\label{fig05}
 \end{figure*}
@@ -206,14 +206,14 @@ La classification automatique non supervisée a été réalisée avec un nombre 
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{Fig_06}
+	\includegraphics[width=0.99\textwidth]{Fig_06}
 	\caption{Estimation des niveaux de confiance des pixels avec des valeurs de probabilité de rejet pour les images Landsat 8-9 OLI/TIRS, Guinée-Bissau (2017, 2020 et 2023)}
 	\label{fig06}
 \end{figure*}
 
 \begin{figure*}[htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{Fig_07}
+	\includegraphics[width=0.99\textwidth]{Fig_07}
 	\caption{Estimation des niveaux de confiance des pixels avec des valeurs de probabilité de rejet pour les images Landsat 8-9 OLI/TIRS, pour les années 2017, 2020 et 2023}
 	\label{fig07}
 \end{figure*}
