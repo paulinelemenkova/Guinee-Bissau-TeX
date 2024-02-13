@@ -193,11 +193,11 @@ Nevertheless, despite many existing use cases, remote sensing has limitations an
 
 The segments of the Landsat color composite images from May 7, 2023, May 6, 2020, and April 28, 2017 used in this study are shown in figure \ref{fig03}. Images have been filtered to reduce noise due to cloudiness and atmospheric effects. Images were systematically selected from the USGS EarthExplorer repository and taken at the end of the dry season. During this period, cloud cover is generally low but vegetation appears bright green and contrasts with all other land cover types.
 
-\section{Méthode}
+\section{Methods}
 
-\subsection{L’utilisation de GRASS GIS pour le traitement d'images satellites}
+\subsection{Using GRASS GIS for satellite image processing}
 
-L'analyse de détection des changements de paysages basée sur des images satellite est une technique de logiciels GRASS SIG qui effectue une comparaison entre les types de couverture terrestre détectés à l'aide d'images obtenues à différentes dates. L'analyse comparative des cartes de classification issues de ces données multi-temporelles permet de détecter des changements de paysage \cite{Pennober,Ndehedehe2022}. 
+Landscape change detection analysis based on satellite images is a GRASS GIS software technique that performs a comparison between land cover types detected using images obtained on different dates. The comparative analysis of classification maps resulting from these multi-temporal data makes it possible to detect landscape changes \cite{Pennober,Ndehedehe2022}. 
 
 \begin{figure*}[htb]
 	\centering
@@ -206,15 +206,15 @@ L'analyse de détection des changements de paysages basée sur des images satell
 	\label{fig04}
 \end{figure*}
 
-Dans cette approche, les images satellites de différentes dates sont classées par le GRASS SIG indépendamment puis les cartes de classification sont comparées pour les années 2017, 2020 et 2023, figure \ref{fig03}. Une telle comparaison est basée sur les valeurs individuelles de réflectance spectrale du pixel sur les images de différentes dates. La comparaison de ces changements sur les images classificatrices de différentes dates montre la dynamique du paysage sur cette période.
+In this approach, satellite images from different dates are classified by GRASS GIS independently and then the classification maps are compared for the years 2017, 2020 and 2023, figure \ref{fig03}. Such a comparison is based on individual pixel spectral reflectance values on images of different dates. Comparing these changes on classifying images from different dates shows the dynamics of the landscape over this period.
 
-Le traitement des images numériques utilisé pour créer une carte de couverture terrestre à partir de l'imagerie Landsat OLI/TIRS a été réalisé en cinq étapes à l'aide des techniques GRASS SIG: importation des images, exploration et analyse des données, classification des images, post-traitement et cartographie des images, et l’évaluation de la précision. Les images Landsat ont été rectifiées géométriquement selon les coordonnées EPSG : 2095, zone 28N de Mercator Transverse Universelle (UTM) pour la Guinée Bissau. 
+The digital image processing used to create a land cover map from Landsat OLI/TIRS imagery was carried out in five steps using GRASS GIS techniques: image import, data exploration and analysis, classification of images, image post-processing and mapping, and accuracy assessment. The Landsat images were geometrically rectified according to EPSG coordinates: 2095, Universal Transverse Mercator (UTM) zone 28N for Guinea Bissau.
 
-\subsection{Classification des données Landsat}
+\subsection{Classification of Landsat data}
 
-En général, une cartographie précise de la végétation utilisant la classification des images satellite n'est pas facile à réaliser en raison de la confusion spectrale entre les différents types de végétation et de la similitude de la réflectance spectrale des diverses plantes. De plus, les données ne sont pas normalement distribuées. Ainsi, afin d’améliorer la précision de la classification, les données multi-temporelles Landsat OLI/TIRS ont été traitées à l’aide d’une approche de vision par ordinateur basée sur des techniques de groupement automatisées. Cela a permis de classer différents types d'occupation du sol sur la Guinée-Bissau dans la zone d'étude. 
+In general, accurate vegetation mapping using satellite image classification is not easy to achieve due to the spectral confusion between different vegetation types and the similarity in spectral reflectance of various plants. Additionally, the data is not normally distributed. Thus, in order to improve the classification accuracy, multi-temporal Landsat OLI/TIRS data were processed using a computer vision approach based on automated clustering techniques. This made it possible to classify different types of land use in Guinea-Bissau in the study area.
 
-Pour faciliter le traitement des données, les meilleures combinaisons de bandes Landsat ont été rassemblées et empilées dans les images composites de fausses vraies et couleurs fausses (bandes 4-3-2, 2-3-4, et 7-6-4 comme Red-Green-Blue) et SWIR2, SWIR1, Red), figure \ref{fig04}. Les bandes qui produisaient la meilleure séparation pour les forêts tropicales, les terres agricoles, les zones urbaines, les zones côtières et les mangroves comprenaient les bandes 4 (rouge), 3 (vert) et 2 (NIR). Pour traiter ces bandes, les techniques d'étirement de contraste et les composites de couleurs ont été appliqués à l'aide des modules pertinents du logiciel GRASS GIS. 
+To facilitate data processing, the best combinations of Landsat bands were collected and stacked into false true and false color composite images (bands 4-3-2, 2-3-4, and 7-6-4 as Red -Green-Blue) and SWIR2, SWIR1, Red), figure \ref{fig04}. The bands that produced the best separation for rainforests, farmland, urban areas, coastal areas, and mangroves included bands 4 (red), 3 (green), and 2 (NIR). To process these bands, contrast stretching techniques and color composites were applied using the relevant modules of GRASS GIS software.
 
 \section{Résultats}
 
