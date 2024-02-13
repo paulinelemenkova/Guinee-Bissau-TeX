@@ -110,7 +110,7 @@
           }
 
 \begin{abstract}
-The objective of this study is to map land cover changes in the coastal region of Guinea-Bissau, West Africa. A study area encompasses the floodplains of the Geba, Caceu and Rio Grande de Buba rivers located in the western coastal region of Guinea-Bissau. Changes in the land cover types was assessed and compared. The methodology included the use of GRASS GIS scripts and modules “i.cluster” and “i.maxlik” for image analysis. Data include three Landsat 8-9 OLI/TIRS satellite images from 2017 to 2023 which were used for image classification and analysis. Auxiliary modules included “i.group”, “r.import” and other GRASS GIS scripting techniques applied for Landsat image processing. The results of image processing demonstrated changes in land cover types that were observed, detected and compared for selected landscapes in the study area. The increase in the extent of mangroves and urban and agricultural areas and the corresponding decrease in natural forest areas are detected.
+The objective of this study is to map land cover changes in the coastal region of Guinea-Bissau, West Africa. A study area encompasses the floodplains of the Geba, Caceu and Rio Grande de Buba rivers located in the western coastal region of Guinea-Bissau. Changes in the land cover types was assessed and compared. The methodology included the use of GRASS GIS scripts and modules “i.cluster” and “i.maxlik” for image analysis. Data include three Landsat 8-9 OLI/TIRS satellite images from 2017 to 2023 which were used for image classification and analysis. Auxiliary modules included “i.group”, “r.import” and other GRASS GIS scripting techniques applied for Landsat image processing. The results of image processing demonstrated changes in land cover types that were observed, detected and compared for selected landscapes in the study area. The increase in the extent of mangroves and urban and agricultural areas and the corresponding decrease in natural forest areas are detected and demonstrated on the presented maps of land cover changes.
 \end{abstract}
 
 \begin{keyword}
@@ -125,6 +125,72 @@ global change \sep Earth science \sep cartography \sep geoinformatics \sep remot
 
 \end{frontmatter}
 
+\section{Introduction}
+
+\subsection{Contexte}
+Au cours des dernières décennies, des problèmes environnementaux à grande échelle, notamment la déforestation, l'érosion des sols et le surpâturage, ont attiré l'attention internationale sur la Guinée-Bissau. La conversion extensive des marais salants, des forêts et des mangroves en terres agricoles et urbaines a un impact sur les types de couverture terrestre dans les régions côtières du pays \cite{Lopes2022,RAIMUNDOLOPES2022106181,CABRAL2017115} et affecte la dynamique de la configuration du paysage \cite{VASCONCELOS2002139,LOPES2023116804}. Ce ne sont là que les effets les plus récents et les plus évidents des activités anthropiques dans cette région. 
+
+Le changement de la couverture terrestre est devenu un sujet important pour la surveillance environnementale en raison des problèmes de changement climatique \cite{Palazot}. Diverses données de télédétection ont été utilisées pour détecter et surveiller les changements de la couverture terrestre à l’échelle locale, régionale et mondiale \cite{Dao}. L’objectif de la détection des changements est d’identifier les changements sur les images satellites entre deux dates ou plus, d’identifier le type de changement et de quantifier la quantité de ces changements. 
+
+Un certain nombre de techniques de vision par ordinateur ont été développées pour une détection efficace des changements de la couverture terrestre \cite{Lenco,Mainguet}. Certains d’entre eux visent à détecter les changements de paysage à l’aide de techniques d’amélioration de l’image \cite{Bouchot}, telles que la différenciation des images, le rationnement ou les méthodes d’analyse des composantes principales \cite{Crettez,SHARMA2023100963}. Cependant, pour obtenir des informations détaillées sur les changements d’occupation du sol, la comparaison automatique de différentes images est nécessaire. Traditionnellement, la méthode détecte les changements détaillés de la couverture terrestre entre les images satellites à deux dates en comparant les cartes obtenues à l’aide d’une classification humaine supervisée \cite{Geroyannis,Blamont}. Cependant, l’utilisation d’une telle méthode nécessite des zones d’entraînement indépendantes et nécessite souvent la connaissance a-priori du terrain local.
+
+Contrairement aux méthodes existantes, la classification par machine, présentée dans cet article, est indépendante et représente objectivement la dynamique du paysage basée sur les algorithmes de vision par ordinateur et la reconnaissance automatique de la réflectance spectrale au niveau des pixels. En alternative aux méthodes SIG existantes, cet article présente les images traitées et classées à l’aide de scripts, c’est-à-dire une approche de programmation appliquée au traitement des données géographiques. 
+
+Dans cette étude, les principales transitions de classes de couverture observées étaient la perte de forêts de mangroves intactes et les gains correspondants en termes de superficie de zones agricoles et de croissance de végétation secondaire. Ces transitions correspondent aux modèles d'extraction de ressources prédominants dans les régions côtières de Guinée Bissau d'après les études pertinentes \cite{PEREIRA2022100746,CARREIRAS2012426}.
+
+%%%%%%%%%%%%
+\subsection{L'objectif et motivation}
+
+L’objectif principale de cet article est d’aborder le problème susmentionné de la surveillance environnementale de la Guinée-Bissau en utilisant l’approche de programmation du logiciel GRASS GIS pour le traitement d’images par satellite. Une nouvelle série d’images Landsat OLI/TIRS est traitée à l’aide des modules GRASS GIS et de la stratégie de script. En utilisant cette approche, la décélération des types de couverture terrestre est effectuée automatiquement à l’aide d’algorithmes de vision par ordinateur qui détectent la réflectance spectrale des pixels sur les images et les attribuent à différentes catégories par regroupement. Cette méthode est testée, expliquée et présentée sous la forme d’une série de nouvelles cartes couvrant la région Guinée-Bissau, Afrique de l’Ouest, figure \ref{fig01}.
+
+Les objectifs spécifiques de cette recherche étaient (1) de produire des cartes d'occupation du sol basées sur l'interprétation et la classification de photos satellite Landsat OLI/TIRS de 2017 à 2023 couvrant 6 ans, (2) de quantifier et de visualiser les changements dynamiques. de la couverture végétale sur la base de ces cartes, et (3) évaluer l'exactitude de la classification numérique pour la cartographie de la végétation dans les plaines inondables et la zone côtière de Guinée-Bissau. La méthodologie de ce projet s'appuie sur les techniques d'analyse et de script GRASS GIS utilisées pour le traitement d'une série d'images Landsat OLI/TIRS. Les images ont été traitées numériquement à l'aide d'algorithmes de classification et d'interprétation visuelle des images satellite.
+
+Le but de cette recherche est d'identifier et de quantifier les changements naturels et induits par l'homme dans les plaines inondables de marée dans les zones côtières des rivières Geba, Caceu et Rio Grande de Buba, Guinée-Bissau, à l'aide d'images satellite Landsat OLI/TIRS de 2017 à 2023. La région côtière située au nord-ouest de la Guinée-Bissau comprend des mangroves et des plaines inondables, figure \ref{fig01}. Ces régions se composent de diverses classes de couverture végétale et comprennent des forêts inondées, des prairies, des zones urbaines, des zones de croissance secondaire et des forêts de mangroves \cite{ANDREETTA2016314}. Les plaines inondables des deltas fluviaux le long de la côte atlantique comprennent également des écosystèmes de mangroves.
+
+\begin{figure}[htb]
+    \begin{center}
+    \setlength{\unitlength}{0.5cm}
+	\includegraphics{Fig_01.jpg}
+    \end{center}
+    \caption{Carte topographique de la Guinée-Bissau, Afrique de l’Ouest. Source cartographique: auteur. Logiciel : GMT.}
+    \label{fig01}
+\end{figure}
+
+\section{Zone d'étude}
+
+La zone d'étude de ce projet est située dans la région côtière occidentale de la Guinée Bissau, sur les côtes atlantiques, approximativement entre les latitudes 10.5° N to 13.0° N et les longitudes 13.5° W et 17° W (figure \ref{fig01}). La région côtière de la Guinée-Bissau est l’un des écosystèmes tropicaux d’Afrique de l’Ouest les moins connus en l’absence d’études existantes. 
+
+De plus, la Guinée-Bissau fait partie des pays africains les plus vulnérables et menacés au changement climatique en raison de sa topographie plate et de sa vaste zone côtière sinueuse composée de plusieurs rivières se jetant dans l'océan Atlantique, ainsi que des marées océaniques qui contribuent aux inondations locales \cite{Temudoetal}. Il est bien connu que les changements dans les types de couverture terrestre sont liés aux activités agricoles intensives et aux effets climatiques \cite{TemudoSantos,Diengetal}, figure \ref{fig02}. L'augmentation des températures dans les régions intérieures du pays et les périodes de sécheresse qui entraînent la désertification. 
+
+\begin{figure*}[htb]
+	\centering
+	\includegraphics[width=0.99\textwidth]{Fig_02}
+	\caption{Carte des types d’utilisation des terres en Guinée-Bissau, Afrique de l’Ouest. Données : Organisation pour l’alimentation et l’agriculture - Food and Agriculture Organisation (FAO). Source cartographique : auteur. Logiciel : QGIS.}
+	\label{fig02}
+\end{figure*}
+
+D'autres effets incluent les effets des lunes et des fluctuations des marées le long des régions côtières qui contribuent aux inondations locales et à l'augmentation de la végétation submergée telle que les mangroves. Ainsi, en Guinée-Bissau, les fluctuations de température et les saisons des pluies alternatives de type mousson, alternées avec des périodes de vents chauds et secs soufflant du Sahara, régulent la possibilité d'activités agricoles \cite{Carn}. Une analyse connexe a également été réalisée concernant la vulnérabilité écologique des régions côtières de Guinée-Bissau et a été rapportée par Lopes et al. (2022). 
+
+Le climat tropical de la Guinée-Bissau connaît deux saisons extrêmement contrastées : une saison sèche de novembre à mai avec des vents poussiéreux, un temps chaud et sans pluie, et une saison humide de mousson de juin à octobre avec de fortes pluies et des conditions chaudes et humides. Cette région est  proche de l'embouchure du fleuve Geba. Bien qu'il n'y ait pas de sous l'influence de l'eau salée de l'océan, elle est affectée par les marées caractéristiques de la côte atlantique et de l'estuaire du fleuve qui affectent la végétation dans les lagons \cite{Catarino}.
+
+\section{Données satellitaires}
+
+L'utilisation d'images satellitaires et de données de télédétection a débuté depuis les années 1970 avec le lancement des missions satellitaires \cite{Heymann}. La synthèse des applications du traitement des images satellite dans les études géographiques depuis cette période est bien présentée par Regrain \cite{Regrain}. L'utilisation continue des données de télédétection au cours des 50 dernières années pour la surveillance de l'environnement prouve leur utilité et leur valeur incontestable en tant que source de données pour la recherche géographique.
+
+\begin{figure*}[htb]
+	\centering
+	\includegraphics[width=0.99\textwidth]{Fig_03}
+	\caption{Images composites en couleur de navigation RGB réfléchissante de niveau 1 sur la Guinée-Bissau, Afrique de l’Ouest. Source des données : USGS. Les images ont été prises le 7 mai 2023, le 6 mai 2020 et le 28 avril 2017.}
+	\label{fig03}
+\end{figure*}
+
+Aujourd’hui, les images satellites constituent la meilleure source d’informations géospatiales disponible et peuvent être utilisées pour cartographier les paysages et effectuer des analyses environnementales \cite{MASOLELE2021112600,Lemenkova202229,TANG2023113626,Lemenkova2022}. Par exemple, les images satellites sont utilisées pour analyser les changements de couverture terrestre et la déforestation dans les forêts tropicales d’Afrique, et documentent ainsi leur emplacement et les changements de paysage au fil du temps \cite{Kilian,Lemenkova202310,jmse11040871,Tsayem}. 
+
+Parmi les différents types d'images satellite, l'importance de Landsat 8-9 OLI/TIRS pour l'analyse environnementale a été bien décrite dans la littérature. Il existe de nombreux exemples d'utilisation de Landsat pour la surveillance environnementale des régions côtières d'Afrique de l'Ouest (Lahuec et al., 1992; \cite{Rifai,Lemenkova202227,Lemenkova202322}. De plus, ils sont largement utilisée pour documenter les processus de déforestation, de couverture terrestre et de changement d'utilisation des terres, en Guinée Bissau \cite{TemudoCabral,Cuq}.
+
+Néanmoins, malgré de nombreux cas d'utilisation existants, la télédétection présente des limites et des erreurs inhérentes qui peuvent être introduites lors du pré-traitement, de la classification numérique et visuelle, de la rectification aux coordonnées du monde réel, du post-traitement et de l'enregistrement sur d'autres images \cite{Desjardins,Girou}. Pour ces raisons, il est nécessaire d'utiliser des méthodes avancées de traitement d'images telles que le logiciel GRASS SIG qui permet de traiter et d'analyser avec précision les données de télédétection grâce à des modules spéciaux et les scripts.
+
+Les segments des images composites couleur Landsat de 7 mai 2023, le 6 mai 2020 et le 28 avril 2017 utilisées dans cette étude sont présentés dans la figure \ref{fig03}. Les images ont été filtrées pour réduire le bruit dû à la nébulosité et aux effets atmosphériques. Les images ont été systématiquement sélectionnées dans le référentiel USGS EarthExplorer et prises à la fin de la saison sèche. Pendant cette période, le taux de couverture nuageuse est généralement faible mais la végétation apparaît d'un vert vif et contraste avec tous les autres types de couverture terrestre.
 
 \section{Ethics statements}
 
